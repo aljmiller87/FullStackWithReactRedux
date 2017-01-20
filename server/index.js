@@ -8,7 +8,33 @@ console.log(`Server running in ${process.env.NODE_ENV} mode`);
 
 const app = express();
 
+const listOfCheeses = [
+    "Bath Blue",
+    "Barkham Blue",
+    "Buxton Blue",
+    "Cheshire Blue",
+    "Devon Blue",
+    "Dorset Blue Vinney",
+    "Dovedale",
+    "Exmoor Blue",
+    "Harbourne Blue",
+    "Lanark Blue",
+    "Lymeswold",
+    "Oxford Blue",
+    "Shropshire Blue",
+    "Stichelton",
+    "Stilton",
+    "Blue Wensleydale",
+    "Yorkshire Blue"
+];
+
 app.use(express.static(process.env.CLIENT_PATH));
+
+app.get('/cheeses', (req, res) => {
+    return (
+        res.status(200).json(listOfCheeses)
+    );
+});
 
 function runServer() {
     return new Promise((resolve, reject) => {
